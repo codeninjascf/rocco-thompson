@@ -59,4 +59,12 @@ public class PlayerController : MonoBehaviour
             gameManager.KillPlayer();
         }
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Checkpoint"))
+        {
+            gameManager.SetCheckpoint(other.transform);
+        }
+    }
 }
