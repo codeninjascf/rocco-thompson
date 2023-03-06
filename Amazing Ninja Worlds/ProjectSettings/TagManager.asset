@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Hazards
   - Checkpoint
+  - Hazard
+  - Collectible
+  - Goal
+  - FlipGravity
+  - RevertGravity
   layers:
   - Default
   - TransparentFX
