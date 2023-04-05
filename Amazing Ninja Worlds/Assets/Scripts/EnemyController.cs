@@ -24,4 +24,12 @@ public class EnemyController : MonoBehaviour
         _rigidbody.velocity = Vector2.zero;
         _rigidbody.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Shuriken"))
+        {
+            gameObject.SetActive(false);
+        }
+    }
 }
