@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     private bool _enabled;
     private Rigidbody2D _rigidbody;
     private Animator _animator;
+    private AudioManager _audioManager;
+    private AudioManager audioManager;
     public bool GravityFlipped
     {
         get => _gravityFlipped;
@@ -38,10 +40,11 @@ public class PlayerController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _audioManager = FindObjectOfType<AudioManager>();
 
         _enabled = true;
         GravityFlipped = false;
-        _enabled = true;
+        _enabled = true;    
     }
 
 
@@ -49,6 +52,14 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (!_enabled) return;
+
+        bool previouslyGrounded = _isGrounded;
+
+        if(!previouslyGrounded && _isGrounded)
+        {
+            audioManager.PlayAudio("PlayerLand");
+        }
+
         _isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundDistanceThreshold, whatIsGround);
         _isGrounded = !GravityFlipped ?
             Physics2D.Raycast(transform.position, Vector2.down,
@@ -60,6 +71,7 @@ public class PlayerController : MonoBehaviour
         {
             _animator.SetBool("Jumping", true);
             _rigidbody.velocity = Vector2.up * jumpForce;
+            _audioManager.PlayAudio("PlayerJump");
         }
         else
         {
