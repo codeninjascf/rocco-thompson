@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D theRB;
     public float moveSpeed;
     public float jumpForce;
-    public Transoform groundPoint;
+    public Transform groundPoint;
     private bool isOnGround;
     public LayerMask whatIsGround;
 
@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {theRB.velocity = new Vector2(Input.GetAxisRaw("H"))
+    {
         theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, theRB.velocity.y);
         if (Input.GetButtonDown("Jump"))
         {
