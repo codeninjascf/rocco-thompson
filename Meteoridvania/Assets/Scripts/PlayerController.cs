@@ -25,12 +25,7 @@ public class PlayerController : MonoBehaviour
         // move sideways
         theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, theRB.velocity.y);
 
-        isOnGround = Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround);
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
-        }
+        
 
         // hande direction change
         if (theRB.velocity.x < 0)

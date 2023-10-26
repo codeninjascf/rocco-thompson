@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class CaneraController : MonoBehaviour
 {
-    private PlayerController player;
+    public GameObject player;
+    public BoxCollider2D boundsBox;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<PlayerController>();
+
     }
 
     // Update is called once per frame
@@ -17,8 +18,11 @@ public class CaneraController : MonoBehaviour
     {
         if (player != null)
         {
-            transform.position = new Vector3(player.transform.position.x, player.transform.position.x, player.transform.position.z);
+            transform.position = new Vector3(
+                Mathf.Clamp(player.transform.position.x, boundsBox.bounds.min.x, boundsBox.bounds.max.x),
+                Mathf.Clamp(player.transform.position.y, boundsBox.bounds.min.y, boundsBox.bounds.max.y),
+                transform.position.z);
 
         }
     }
-}
+}   
