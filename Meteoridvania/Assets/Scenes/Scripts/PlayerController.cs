@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public LayerMask whatIsGround;
 
     public Animator anim;
+    public BulletController shotToFire;
+    public Transform shotPoint;
 
     // Start is called before the first frame update
     void Start()
