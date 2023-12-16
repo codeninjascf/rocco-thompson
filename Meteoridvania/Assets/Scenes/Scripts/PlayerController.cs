@@ -29,6 +29,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetButtonDown("Fire2"))
+        {
+            dashCounter = dashTime;
+        }
+
+        if (dashCounter > 0)
+        {
+            dashCounter = dashCounter - Time.deltaTime;
+
+            theRB.velocity = new Vector2(dashSpeed * transform.localScale.x, theRB.velocity.y);
+        }
         // move sideways
         theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, theRB.velocity.y);
 
