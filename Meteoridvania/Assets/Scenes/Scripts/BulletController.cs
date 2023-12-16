@@ -7,8 +7,7 @@ public class BulletController : MonoBehaviour
     public float bulletSpeed;
     public Rigidbody2D theRB;
     public Vector2 Movedir;
-    public GameObject shotToFire;
-    public Transform shotPoint;
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,11 +28,9 @@ public class BulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        theRB.velocity = Movedir * bulletSpeed;
-
-        if (Input.GetButtonDown("Fire1"))
+        if (theRB != null)
         {
-            Instantiate(shotToFire, shotPoint.position, shotPoint.rotation);
+            theRB.velocity = Movedir * bulletSpeed;
         }
     }
 }

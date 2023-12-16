@@ -15,10 +15,15 @@ public class PlayerController : MonoBehaviour
     public BulletController shotToFire;
     public Transform shotPoint;
 
+    private bool canDoubleJump;
+
+    public float dashSpeed, dashTime;
+    private float dashCounter;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -27,16 +32,17 @@ public class PlayerController : MonoBehaviour
         // move sideways
         theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, theRB.velocity.y);
 
-        
+
 
         // hande direction change
         if (theRB.velocity.x < 0)
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
-        }else if (theRB.velocity.x > 0)
-         {
+        }
+        else if (theRB.velocity.x > 0)
+        {
             transform.localScale = Vector3.one;
-         }
+        }
 
         // checking if on the ground
         isOnGround = Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround);
@@ -44,12 +50,26 @@ public class PlayerController : MonoBehaviour
         // jumping
         if (Input.GetButtonDown("Jump") && isOnGround)
         {
+            if (isOnGround)
+            {
+                canDoubleJump = true;
+            }
+            else
+            {
+                canDoubleJump = false;
+            }
             theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
-        }
 
-        anim.SetBool("isOnGround", isOnGround);
-        anim.SetFloat("speed", Mathf.Abs(theRB.velocity.x));
+
+            anim.SetBool("isOnGround", isOnGround);
+            anim.SetFloat("speed", Mathf.Abs(theRB.velocity.x));
+        }
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Instantiate(shotToFire, shotPoint.position, shotPoint.rotation);
+        }
     }
 }
+
 
     
