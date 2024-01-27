@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -20,6 +18,11 @@ public class PlayerController : MonoBehaviour
     public float dashSpeed, dashTime;
     private float dashCounter;
 
+    public SpriteRenderer theSR, afterImage;
+    public float afterImageLifetime, timeBetweenAfterImages;
+    private float afterImageCounter;
+    public Color afterImageColor;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,9 +32,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Fire2"))
+
+        //dashing
+        if (Input.GetButtonDown("Fire2"))
         {
             dashCounter = dashTime;
+
+            ShowAfterImage();
         }
 
         if (dashCounter > 0)
@@ -39,6 +46,12 @@ public class PlayerController : MonoBehaviour
             dashCounter = dashCounter - Time.deltaTime;
 
             theRB.velocity = new Vector2(dashSpeed * transform.localScale.x, theRB.velocity.y);
+
+            afterImageCounter -= Time.deltaTime;
+            if(afterImageCounter <= 0)
+            {
+                ShowAfterImage();
+            }
         }
         // move sideways
         theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, theRB.velocity.y);
@@ -80,7 +93,18 @@ public class PlayerController : MonoBehaviour
             Instantiate(shotToFire, shotPoint.position, shotPoint.rotation);
         }
     }
+
+    private void ShowAfterImage()
+    {
+        SpriteRenderer image = Instantiate(afterImage, transform.position, transform.rotation);
+        image.sprite = theSR.sprite;
+        image.transform.localScale = transform.localScale;
+        image.color = afterImage.color;
+
+        Destroy(image.gameObject, afterImageLifetime);
+
+        afterImageCounter = timeBetweenAfterImages;
+    }
+
+   
 }
-
-
-    
