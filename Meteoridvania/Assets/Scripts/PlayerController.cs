@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
     private float afterImageCounter;
     public Color afterImageColor;
 
+    public float waitAfterDashing;
+    private float dashRechargeCounter;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +35,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (dashRechargeCounter > 0)
+        {
+          
 
+        }
         //dashing
         if (Input.GetButtonDown("Fire2"))
         {

@@ -503,7 +503,7 @@ MonoBehaviour:
   afterImage: {fileID: 3401704360377077161, guid: 646700d0dd6e3d143a830ab5a58394f0, type: 3}
   afterImageLifetime: 0.5
   timeBetweenAfterImages: 0.03333334
-  afterImageColor: {r: 0.02264148, g: 0.22752959, b: 1, a: 0}
+  afterImageColor: {r: 0, g: 0.9622642, b: 0.85402304, a: 0}
 --- !u!95 &958826295
 Animator:
   serializedVersion: 5
