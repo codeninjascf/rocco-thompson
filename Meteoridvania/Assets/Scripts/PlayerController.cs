@@ -26,6 +26,11 @@ public class PlayerController : MonoBehaviour
     public float waitAfterDashing;
     private float dashRechargeCounter;
 
+    public gameObject standing, ball;
+    public float waitToBall;
+    private float ballCounter;
+    public animator ballAnim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +46,7 @@ public class PlayerController : MonoBehaviour
 
         }
         //dashing
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2") && standing.activeSelf)
         {
             dashCounter = dashTime;
 
@@ -99,19 +104,45 @@ public class PlayerController : MonoBehaviour
         {
             Instantiate(shotToFire, shotPoint.position, shotPoint.rotation);
         }
+
+        private void ShowAfterImage()
+        {
+            SpriteRenderer image = Instantiate(afterImage, transform.position, transform.rotation);
+            image.sprite = theSR.sprite;
+            image.transform.localScale = transform.localScale;
+            image.color = afterImage.color;
+
+            Destroy(image.gameObject, afterImageLifetime);
+
+            afterImageCounter = timeBetweenAfterImages;
+        }
+
+        if!(ball.activeSelf)
+        {
+            if (Input.GetAxisRaw("Vertical") < -.9f)
+            {
+                ballCounter -= Time.deltaTime;
+                if (ballCounter <= 0)
+                {
+                    ball.SetActive(true);
+                    standing.SetActive(false);
+                }
+            }
+            else
+            {
+                ballCounter = waitToBall;
+            }
+        }
+        // moving animations
+        if (standing.activeSelf)
+        {
+            anim.SetBool("isOnGround, isOnGround)", isOnGround);
+            anim.SetFloat("speed", Mathf.abs(theRB.velocity.x));
+        }
+
+        if(ball.activeSelf)
+        {
+            ballAnim.SetFloat("speed", Mathf.Abs(theRB.velocity.x));
+        }
     }
-
-    private void ShowAfterImage()
-    {
-        SpriteRenderer image = Instantiate(afterImage, transform.position, transform.rotation);
-        image.sprite = theSR.sprite;
-        image.transform.localScale = transform.localScale;
-        image.color = afterImage.color;
-
-        Destroy(image.gameObject, afterImageLifetime);
-
-        afterImageCounter = timeBetweenAfterImages;
-    }
-
-   
 }
