@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D theRB;
@@ -26,15 +27,27 @@ public class PlayerController : MonoBehaviour
     public float waitAfterDashing;
     private float dashRechargeCounter;
 
-    public gameObject standing, ball;
+    public GameObject standing, ball;
     public float waitToBall;
     private float ballCounter;
-    public animator ballAnim;
+    public Animator ballAnim;
 
     // Start is called before the first frame update
     void Start()
     {
 
+    }
+
+    public void ShowAfterImage()
+    {
+        SpriteRenderer image = Instantiate(afterImage, transform.position, transform.rotation);
+        image.sprite = theSR.sprite;
+        image.transform.localScale = transform.localScale;
+        image.color = afterImage.color;
+
+        Destroy(image.gameObject, afterImageLifetime);
+
+        afterImageCounter = timeBetweenAfterImages;
     }
 
     // Update is called once per frame
@@ -105,19 +118,7 @@ public class PlayerController : MonoBehaviour
             Instantiate(shotToFire, shotPoint.position, shotPoint.rotation);
         }
 
-        private void ShowAfterImage()
-        {
-            SpriteRenderer image = Instantiate(afterImage, transform.position, transform.rotation);
-            image.sprite = theSR.sprite;
-            image.transform.localScale = transform.localScale;
-            image.color = afterImage.color;
-
-            Destroy(image.gameObject, afterImageLifetime);
-
-            afterImageCounter = timeBetweenAfterImages;
-        }
-
-        if!(ball.activeSelf)
+        if (!(ball.activeSelf))
         {
             if (Input.GetAxisRaw("Vertical") < -.9f)
             {
@@ -137,7 +138,7 @@ public class PlayerController : MonoBehaviour
         if (standing.activeSelf)
         {
             anim.SetBool("isOnGround, isOnGround)", isOnGround);
-            anim.SetFloat("speed", Mathf.abs(theRB.velocity.x));
+            anim.SetFloat("speed", Mathf.Abs(theRB.velocity.x));
         }
 
         if(ball.activeSelf)
