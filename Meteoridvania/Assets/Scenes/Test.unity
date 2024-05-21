@@ -506,6 +506,10 @@ MonoBehaviour:
   timeBetweenAfterImages: 0.03333334
   afterImageColor: {r: 0, g: 0.9622642, b: 0.85402304, a: 0}
   waitAfterDashing: 0.25
+  standing: {fileID: 958826289}
+  ball: {fileID: 1936964308}
+  waitToBall: 0.5
+  ballAnim: {fileID: 958826295}
 --- !u!95 &958826295
 Animator:
   serializedVersion: 5

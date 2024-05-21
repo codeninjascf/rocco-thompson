@@ -32,6 +32,9 @@ public class PlayerController : MonoBehaviour
     private float ballCounter;
     public Animator ballAnim;
 
+    public Transform bombPoint;
+    public GameObject bomb;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -129,6 +132,22 @@ public class PlayerController : MonoBehaviour
                     standing.SetActive(false);
                 }
             }
+            else
+            {
+                ballCounter = waitToBall;
+            }
+                if (Input.GetAxisRaw("Vertical") > -.9f)
+                {
+                    ballCounter -= Time.deltaTime;
+                    if (ballCounter <= 0)
+                    {
+                        ball.SetActive(true);
+                        standing.SetActive(false);
+                    }
+                }
+
+            
+            
             else
             {
                 ballCounter = waitToBall;
