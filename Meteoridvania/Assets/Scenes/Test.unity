@@ -611,6 +611,7 @@ GameObject:
   - component: {fileID: 958826290}
   - component: {fileID: 958826294}
   - component: {fileID: 958826295}
+  - component: {fileID: 958826296}
   m_Layer: 0
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -807,6 +808,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &958826296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958826289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccb0ab27c2052b54184dc3975ceb783b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canDoubleJump: 0
+  canDash: 0
+  canBecomeBall: 0
+  canDropBomb: 0
 --- !u!1 &1014107971
 GameObject:
   m_ObjectHideFlags: 0
