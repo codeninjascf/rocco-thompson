@@ -35,10 +35,12 @@ public class PlayerController : MonoBehaviour
     public Transform bombPoint;
     public GameObject bomb;
 
+    private PlayerAbilityTracker abilities;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        abilities = GetComponent<PlayerAbilityTracker>();
     }
 
     public void ShowAfterImage()
@@ -62,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
         }
         //dashing
-        if (Input.GetButtonDown("Fire2") && standing.activeSelf)
+        if (Input.GetButtonDown("Fire2") && standing.activeSelf && abilities.canDash)
         {
             dashCounter = dashTime;
 
@@ -100,7 +102,7 @@ public class PlayerController : MonoBehaviour
         isOnGround = Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround);
 
         // jumping
-        if (Input.GetButtonDown("Jump") && isOnGround)
+        if (Input.GetButtonDown("Jump") && isOnGround && abilities.canDash)
         {
             if (isOnGround)
             {
@@ -136,7 +138,7 @@ public class PlayerController : MonoBehaviour
             {
                 ballCounter = waitToBall;
             }
-                if (Input.GetAxisRaw("Vertical") > -.9f)
+                if (Input.GetAxisRaw("Vertical") > -.9f && abilities.canBecomeBall)
                 {
                     ballCounter -= Time.deltaTime;
                     if (ballCounter <= 0)
