@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
         abilities = GetComponent<PlayerAbilityTracker>();
     }
 
+    // Creates an afterimage effect to visually represent the player's dash movement
     public void ShowAfterImage()
     {
         SpriteRenderer image = Instantiate(afterImage, transform.position, transform.rotation);
@@ -91,18 +92,18 @@ public class PlayerController : MonoBehaviour
         // hande direction change
         if (theRB.velocity.x < 0)
         {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            transform.localScale = new Vector3(-2f, 1f, 1f);
         }
         else if (theRB.velocity.x > 0)
         {
-            transform.localScale = Vector3.one;
+            transform.localScale = new Vector3(2f, 1f, 1f);
         }
 
         // checking if on the ground
         isOnGround = Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround);
 
-        // jumping
-        if (Input.GetButtonDown("Jump") && isOnGround && abilities.canDash)
+        // jumping 
+        if (Input.GetButtonDown("Jump") && (isOnGround || canDoubleJump))
         {
             if (isOnGround)
             {
@@ -118,6 +119,8 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isOnGround", isOnGround);
             anim.SetFloat("speed", Mathf.Abs(theRB.velocity.x));
         }
+
+
         if (Input.GetButtonDown("Fire1"))
         {
             Instantiate(shotToFire, shotPoint.position, shotPoint.rotation);
@@ -158,7 +161,7 @@ public class PlayerController : MonoBehaviour
         // moving animations
         if (standing.activeSelf)
         {
-            anim.SetBool("isOnGround, isOnGround)", isOnGround);
+            anim.SetBool("isOnGround", isOnGround);
             anim.SetFloat("speed", Mathf.Abs(theRB.velocity.x));
         }
 
