@@ -486,12 +486,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753941293}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8723216, y: -2.7966704, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.071429014, y: 0.85714865, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 762571799}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &753941296
 BoxCollider2D:
@@ -651,7 +651,9 @@ Transform:
   m_LocalPosition: {x: 0.9437506, y: -3.653819, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 753941295}
+  - {fileID: 1825631773}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &762571800
@@ -1325,7 +1327,7 @@ GameObject:
   - component: {fileID: 1166286942}
   - component: {fileID: 1166286941}
   m_Layer: 0
-  m_Name: R
+  m_Name: Backgrounddd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1525,7 +1527,7 @@ GameObject:
   - component: {fileID: 1326606922}
   - component: {fileID: 1326606924}
   m_Layer: 0
-  m_Name: Bomb_0
+  m_Name: Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3553,12 +3555,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825631771}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0151798, y: -1.7609497, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.07142913, y: 1.8928694, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 762571799}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1825631774
 BoxCollider2D:
@@ -3817,8 +3819,6 @@ SceneRoots:
   - {fileID: 926303521}
   - {fileID: 214255135}
   - {fileID: 762571799}
-  - {fileID: 753941295}
-  - {fileID: 1825631773}
   - {fileID: 437586994}
   - {fileID: 1014107974}
   - {fileID: 958826293}

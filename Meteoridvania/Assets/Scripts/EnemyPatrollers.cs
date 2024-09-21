@@ -21,8 +21,6 @@ public class EnemyPatrollers : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Mathf.Abs(transform.position.x = patrolPoints[currentPoint].position.x) < .2f)
-        {
-            
+       
     }
 }
