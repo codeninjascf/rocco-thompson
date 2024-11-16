@@ -18,9 +18,39 @@ public class EnemyPatrollers : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    // Update is called once per frame, THIS IS UESED TO SET THE MATH OF THE PATROL POINT SO THEY VARIATE
     void Update()
     {
-       
+        if(Mathf.Abs(transform.position.x - patrolPoints[currentPoint].position.x) = .2f)
+        {
+            if(transform.positiion.y < patrolPoints[currentPoint].position.y - . 5f && theRB.velocity.y < .1f)
+            {
+                theRB.velocity = new Vector2(theRB.velocity.x, jumpForce)
+            }
+            if(transform.position.x < patrolPoints[currentPoint].position.x)
+            {
+                theRB.velocity = new Vector2(moveSpeed, theRB.velocity.y);
+                transform.localScale = Vector3.one;
+            }else
+            {
+                theRB.velocity = new Vector2(moveSpeed, theRB.velocity.y);
+                waitCounter = time.deltaTime;
+
+                if(waitCounter <= 0)
+                {
+                    waitCounter -= waitAtPoints;
+
+                    currentPoint++;
+
+                    if(currentPoint > = patrolPoints.Length)
+                    {
+                        currentPoint = 0;
+                    }
+                    
+                }
+
+                anim.SetFloat("speed", Mathf.abs(theRB.velocity.x)); 
+            }
+        } 
     }
 }
