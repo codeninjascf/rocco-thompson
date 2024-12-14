@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 214255137}
   - component: {fileID: 214255139}
   - component: {fileID: 214255138}
+  - component: {fileID: 214255140}
   m_Layer: 0
   m_Name: Enemy Walker
   m_TagString: Untagged
@@ -450,6 +451,19 @@ MonoBehaviour:
   waitAtPoints: 1
   jumpForce: 10
   theRB: {fileID: 214255138}
+  anim: {fileID: 0}
+--- !u!114 &214255140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214255133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dd4ccb2427f6cd4f8058387fed9b2b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &308133017
 GameObject:
   m_ObjectHideFlags: 0
