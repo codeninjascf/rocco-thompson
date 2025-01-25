@@ -24,6 +24,10 @@ public class PlayerHealthController : MonoBehaviour
     public int currentHealth;
     public int maxHealth;
 
+    public float invincLength, flashLength;
+    private float invicCounter, flashCounter;
+    public SpriteRenderer[] playerSprites;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +37,10 @@ public class PlayerHealthController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(invincCounter > 0 )
+        {
+            invincCounter -= Time.deltaTime;
+        }
         // Your update logic here (if needed)
     }
 

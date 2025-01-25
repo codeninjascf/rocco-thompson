@@ -24,18 +24,21 @@ public class EnemyHealthController : MonoBehaviour
 
         if (totalHealth <= 0)
         {
-            HandleDeath();
+            if(totalHealth <= 0)
+            {
+                if (deathEffect != null)
+                {
+                 Instantiate(deathEffect, transform.position, transform.rotation);
+                }
+            Destroy(gameObject);
+            }
         }
     }
 
     // This method handles the enemy's death effects and destruction
     private void HandleDeath()
     {
-        if (deathEffect != null)
-        {
-            Instantiate(deathEffect, transform.position, transform.rotation);
-        }
-        Destroy(gameObject);
+        
     }
 
     // Start is called before the first frame update
