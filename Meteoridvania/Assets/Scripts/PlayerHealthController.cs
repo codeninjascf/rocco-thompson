@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealthController : MonoBehaviour
@@ -13,6 +11,7 @@ public class PlayerHealthController : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -37,9 +36,30 @@ public class PlayerHealthController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(invincCounter > 0 )
+        if (invicCounter > 0)
         {
-            invincCounter -= Time.deltaTime;
+            invicCounter -= Time.deltaTime;
+
+            flashCounter -= Time.deltaTime;
+            if (flashCounter <= 0)
+            {
+                foreach (SpriteRenderer sr in playerSprites)
+                {
+                    sr.enabled = !sr.enabled;
+                }
+                flashCounter = flashLength;
+            }
+
+            if (invicCounter <= 0)
+            {
+                foreach (SpriteRenderer SR in playerSprites)
+                {
+                    SR.enabled = true;
+                }
+                flashCounter = 0f;
+            }
+
+
         }
         // Your update logic here (if needed)
     }
@@ -50,9 +70,8 @@ public class PlayerHealthController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            currentHealth = 0; // resets to 0 if goes into minus (for UI reasons)
-            Instantiate(deathEffect, transform.position, transform.rotation);
-            gameObject.SetActive(false);
+            currentHealth = 0; // resets to 0 if goes into minus (for UI reasons
+            RespawnController.instance.Respawn();
         }
     }
 }
