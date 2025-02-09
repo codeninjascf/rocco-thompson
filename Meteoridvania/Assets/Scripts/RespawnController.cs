@@ -5,40 +5,35 @@ using UnityEngine.SceneManagement;
 
 public class RespawnController : MonoBehaviour
 {
+
+
+    private GameObject thePlayer;
+    public float waitToRespawn;
     public static RespawnController instance;
 
     private void Awake()
     {
         if (instance == null)
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);  
+            instance=this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
-        }    
+        }
     }
-
+    // Start is called before the first frame Update
     public Vector3 respawnPoint;
-    public float waitToRespawn;
-    private GameObject thePlayer;
-    // Start is called before the first frame update
-    void Start()
-    {
-        thePlayer = PlayerHealthController.instance.gameObject;
-        respawnPoint = thePlayer.transform.position;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void Respawn()
     {
         StartCoroutine(RespawnCo());
+    }
+    void Start()
+    {
+        thePlayer = PlayerHealthController.instance.gameObject;
+        respawnPoint = thePlayer.transform.position;
     }
 
     IEnumerator RespawnCo()
@@ -46,8 +41,13 @@ public class RespawnController : MonoBehaviour
         thePlayer.SetActive(false);
         yield return new WaitForSeconds(waitToRespawn);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        thePlayer.transform.position = respawnPoint;
         thePlayer.SetActive(true);
         PlayerHealthController.instance.FillHealth();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }

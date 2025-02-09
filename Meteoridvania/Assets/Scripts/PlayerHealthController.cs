@@ -1,11 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerHealthController : MonoBehaviour
 {
     public static PlayerHealthController instance;
+    
+    public static RespawnController respawnController;
+
     public int totalHealth = 3;
     public GameObject deathEffect;
-
+    public void FillHealth()
+    {
+        print("yes");
+    }
     private void Awake()
     {
         if (instance == null)
@@ -19,8 +27,18 @@ public class PlayerHealthController : MonoBehaviour
         }
     }
 
+    public IEnumerator wait()
+    {
+       yield return new WaitForSeconds(0.5f);
+        gameObject.transform.localScale = new Vector3(2,2,2);
+
+    }
+
+
+
+
     [HideInInspector]
-    public int currentHealth;
+        public int currentHealth;
     public int maxHealth;
 
     public float invincLength, flashLength;
@@ -71,7 +89,8 @@ public class PlayerHealthController : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0; // resets to 0 if goes into minus (for UI reasons
-            RespawnController.instance.Respawn();
+            RespawnController.instance.Respawn(); // calls the Respawn Function
         }
     }
+
 }
