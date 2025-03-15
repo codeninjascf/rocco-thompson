@@ -17,6 +17,16 @@ public class PlayerController : MonoBehaviour
     public BulletController shotToFire;
     public Transform shotPoint;
 
+    private bool canDoubleJump;
+
+    public float dashSpeed, dashTime;
+    private float dashCounter;
+
+    public SpriteRenderer theSR, afterImage;
+    public float afterImageLifetime, timeBetweenAfterImages;
+    private float afterImageCounter;
+    public Color afterImageColor;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,18 +36,35 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // move sideways
-        theRB.velocity = new Vector2(Input.GetAxisRaw("Hoizontal") * moveSpeed, theRB.velocity.y);
+        // dashing
+        if(Input.GetButtonDown("Fire2"))
+        {
+            dashCounter = dashTime;
 
-        // handle direction change
-        if(theRB.velocity.x < 0)
-        {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
-        }else if(theRB.velocity.x > 0)
-        {
-            transform.localScale = Vector3.one;
+            ShowAfterImage();
         }
-        
+
+        if (dashCounter > 0)
+        {
+            dashCounter= dashCounter - Time.deltaTime;
+            
+            theRB.velocity = new Vector2(dashSpeed * transform.localScale.x, theRB.velocity.y);
+        }
+        else
+        {
+            // move sideways
+            theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, theRB.velocity.y);
+            // handle direction change
+            if(theRB.velocity.x < 0)
+            {
+                transform.localScale = new Vector3(-1f, 1f, 1f);
+            }
+            else if(theRB.velocity.x > 0)
+            {
+                transform.localScale = Vector3.one;
+            }
+        }
+                
         // checking if on ground
         isOnGround = Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround);
 
@@ -47,13 +74,26 @@ public class PlayerController : MonoBehaviour
             theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
         }
 
+        // shooting
+        if(Input.GetButtonDown("Fire1"))
+        {
+            Instantiate(shotToFire, shotPoint);
+            anim.SetTrigger("shotFired");
+        }
         anim.SetBool("isOnGround", isOnGround);
         anim.SetFloat("speed", Mathf.Abs(theRB.velocity.x));
         
-
         if(Input.GetButtonDown("Fire1"))
         {
             Instantiate(shotToFire, shotPoint.position, shotPoint.rotation);
         }
+    }
+
+    public void ShowAfterImage()
+    {
+        SpriteRenderer image = Instantiate(afterImage, transform.position, transform.rotation);
+        image.sprite = theSR.sprite;
+        image.transform.localScale = transform.localScale;
+        image.color = afterImage.color;
     }
 }
