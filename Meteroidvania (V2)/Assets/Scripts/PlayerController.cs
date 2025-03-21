@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour 
 {
+    // Player attributes
     public Rigidbody2D theRB;
     public float moveSpeed;
     public float jumpForce;
@@ -19,81 +20,155 @@ public class PlayerController : MonoBehaviour
 
     private bool canDoubleJump;
 
+    // Dash attributes
     public float dashSpeed, dashTime;
     private float dashCounter;
 
+    // After image attributes
     public SpriteRenderer theSR, afterImage;
     public float afterImageLifetime, timeBetweenAfterImages;
     private float afterImageCounter;
     public Color afterImageColor;
 
+    public float waitAfterDashing;
+    private float dashRechargeCounter;
+
+    public GameObject standing, ball;
+    public float waitToBall;
+    private float ballCounter;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Any initialization code here if needed
     }
 
     // Update is called once per frame
     void Update()
     {
-        // dashing
-        if(Input.GetButtonDown("Fire2"))
+        if(dashRechargeCounter > 0)
+        {
+            dashRechargeCounter -= Time.deltaTime;
+
+            theRB.velocity = new Vector2(dashSpeed * transform.localScale.x, theRB.velocity.y);
+
+            afterImageCounter -= Time.deltaTime;
+            if (afterImageCounter <= 0)
+            {
+                ShowAfterImage();
+            }
+
+            dashRechargeCounter = waitAfterDashing;
+        }
+
+        // Dashing
+        if (Input.GetButtonDown("Fire2") && standing.activeSelf)
         {
             dashCounter = dashTime;
-
             ShowAfterImage();
         }
 
         if (dashCounter > 0)
         {
-            dashCounter= dashCounter - Time.deltaTime;
-            
+            dashCounter -= Time.deltaTime;
             theRB.velocity = new Vector2(dashSpeed * transform.localScale.x, theRB.velocity.y);
+
+            afterImageCounter -= Time.deltaTime;
+            if (afterImageCounter <= 0)
+            {
+                ShowAfterImage();
+            }
         }
         else
         {
-            // move sideways
+            // Move sideways
             theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, theRB.velocity.y);
-            // handle direction change
-            if(theRB.velocity.x < 0)
+
+            // Handle direction change
+            if (theRB.velocity.x < 0)
             {
                 transform.localScale = new Vector3(-1f, 1f, 1f);
             }
-            else if(theRB.velocity.x > 0)
+            else if (theRB.velocity.x > 0)
             {
                 transform.localScale = Vector3.one;
             }
         }
-                
-        // checking if on ground
+
+        // Checking if on ground
         isOnGround = Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround);
 
-        //jumping
-        if(Input.GetButtonDown("Jump") && isOnGround)
+        // Jumping
+        if (Input.GetButtonDown("Jump"))
         {
-            theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
+            if (isOnGround)
+            {
+                theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
+                canDoubleJump = true;  // Allow double jump after landing
+            }
+            else if (canDoubleJump)
+            {
+                theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
+                canDoubleJump = false;  // Prevent double jump once used
+            }
         }
 
-        // shooting
-        if(Input.GetButtonDown("Fire1"))
-        {
-            Instantiate(shotToFire, shotPoint);
-            anim.SetTrigger("shotFired");
-        }
-        anim.SetBool("isOnGround", isOnGround);
-        anim.SetFloat("speed", Mathf.Abs(theRB.velocity.x));
-        
-        if(Input.GetButtonDown("Fire1"))
+        // Shooting
+        if (Input.GetButtonDown("Fire1"))
         {
             Instantiate(shotToFire, shotPoint.position, shotPoint.rotation);
+            anim.SetTrigger("shotFired");
+        }
+
+        // Animator parameters
+        anim.SetBool("isOnGround", isOnGround);
+        anim.SetFloat("speed", Mathf.Abs(theRB.velocity.x));
+
+        // Ball mode
+        if (!ball.activeSelf)
+        {
+            if (Input.GetAxisRaw("Vertical") < -0.9f)
+            {
+                ballCounter -= Time.deltaTime;
+                if (ballCounter <= 0)
+                {
+                    ball.SetActive(true);
+                    standing.SetActive(false);
+                }
+            }
+            else
+            {
+                ballCounter = waitToBall;
+            }
+        }
+        else
+        {
+            if (Input.GetAxisRaw("Vertical") > -0.9f)
+            {
+                ballCounter -= Time.deltaTime;
+                if (ballCounter <= 0)
+                {
+                    ball.SetActive(false);
+                    standing.SetActive(true);
+                }
+            }
+            else
+            {
+                ballCounter = waitToBall;
+            }
         }
     }
 
+    // Show after image effect for dashing
     public void ShowAfterImage()
     {
         SpriteRenderer image = Instantiate(afterImage, transform.position, transform.rotation);
         image.sprite = theSR.sprite;
         image.transform.localScale = transform.localScale;
-        image.color = afterImage.color;
+        image.color = afterImageColor;
+
+        Destroy(image.gameObject, afterImageLifetime);
+        afterImageCounter -= timeBetweenAfterImages;
     }
 }
