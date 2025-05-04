@@ -8,7 +8,7 @@ public class AbilityUnlock : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Player")
+        if (other.tag =="Player")
         {
             PlayerAbilityTracker player = other.GetComponentInParent<PlayerAbilityTracker>();
 
@@ -28,7 +28,8 @@ public class AbilityUnlock : MonoBehaviour
             {
                 player.canDropBomb = true;
             }
-        }    
+            Destroy(gameObject);
+        }
     }
     // Start is called before the first frame update
     void Start()
