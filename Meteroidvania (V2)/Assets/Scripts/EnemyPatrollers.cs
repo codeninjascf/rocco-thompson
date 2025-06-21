@@ -25,7 +25,7 @@ public class EnemyPatrollers : MonoBehaviour
     void Update()
     {
         // Check if the enemy is close enough to the current patrol point
-        if (Mathf.Abs(transform.position.x - patrolPoints[currentPoint].position.x) < .2f)
+        if (Mathf.Abs(transform.position.x - patrolPoints[currentPoint].position.x) > .2f)
         {
             // Check if the enemy needs to jump to reach the patrol point
             if (transform.position.y < patrolPoints[currentPoint].position.y - .5f && theRB.velocity.y < .1f)
