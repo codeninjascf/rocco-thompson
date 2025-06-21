@@ -1,21 +1,30 @@
 fileFormatVersion: 2
-guid: 03382874e2f6ec0418cdeb0858ff3042
+guid: b96b108810fdeeb47860889d306d489b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3439832132484978033
-    second: impact_0
+      213: 4651472796450862913
+    second: power-up_0
   - first:
-      213: -9099884051927682378
-    second: impact_1
+      213: -8966168145293777993
+    second: power-up_1
   - first:
-      213: -6910925780044202809
-    second: impact_2
+      213: -8396681882483885910
+    second: power-up_2
   - first:
-      213: 5758815065893501872
-    second: impact_3
+      213: -4901253224599256145
+    second: power-up_3
+  - first:
+      213: 3588565728726110200
+    second: power-up_4
+  - first:
+      213: 7928031386493379736
+    second: power-up_5
+  - first:
+      213: 1681324263584263227
+    second: power-up_6
   externalObjects: {}
-  serializedVersion: 13
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -81,7 +90,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 64
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -94,7 +103,20 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 64
+    maxTextureSize: 256
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -109,13 +131,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: impact_0
+      name: power-up_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 12
-        height: 12
+        width: 23
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -123,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 175ddb7791dbcbf20800000000000000
-      internalID: 3439832132484978033
+      spriteID: 147b8d22dd95d8040800000000000000
+      internalID: 4651472796450862913
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: impact_1
+      name: power-up_1
       rect:
         serializedVersion: 2
-        x: 12
+        x: 23
         y: 0
-        width: 12
-        height: 12
+        width: 23
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b2bb930ba7b6b180800000000000000
-      internalID: -9099884051927682378
+      spriteID: 7b3675f9395c19380800000000000000
+      internalID: -8966168145293777993
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: impact_2
+      name: power-up_2
       rect:
         serializedVersion: 2
-        x: 24
+        x: 46
         y: 0
-        width: 12
-        height: 12
+        width: 23
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7cc30636e957710a0800000000000000
-      internalID: -6910925780044202809
+      spriteID: aa8f69eb05ef87b80800000000000000
+      internalID: -8396681882483885910
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: impact_3
+      name: power-up_3
       rect:
         serializedVersion: 2
-        x: 36
+        x: 69
         y: 0
-        width: 12
-        height: 12
+        width: 23
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -186,8 +208,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0bbffb97acb6bef40800000000000000
-      internalID: 5758815065893501872
+      spriteID: fa3068109204bfbb0800000000000000
+      internalID: -4901253224599256145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: power-up_4
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 0
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ff4cd964852dc130800000000000000
+      internalID: 3588565728726110200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: power-up_5
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 0
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 894e510aa86060e60800000000000000
+      internalID: 7928031386493379736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: power-up_6
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 0
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3c6f2b7283455710800000000000000
+      internalID: 1681324263584263227
       vertices: []
       indices: 
       edges: []
@@ -203,10 +288,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      impact_0: 3439832132484978033
-      impact_1: -9099884051927682378
-      impact_2: -6910925780044202809
-      impact_3: 5758815065893501872
+      power-up_0: 4651472796450862913
+      power-up_1: -8966168145293777993
+      power-up_2: -8396681882483885910
+      power-up_3: -4901253224599256145
+      power-up_4: 3588565728726110200
+      power-up_5: 7928031386493379736
+      power-up_6: 1681324263584263227
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

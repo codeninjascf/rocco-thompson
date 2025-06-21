@@ -1,30 +1,24 @@
 fileFormatVersion: 2
-guid: b96b108810fdeeb47860889d306d489b
+guid: ddc4d55c67c863247983a6dce3227f29
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4651472796450862913
-    second: power-up_0
+      213: -8604742137920643248
+    second: enemy-death_0
   - first:
-      213: -8966168145293777993
-    second: power-up_1
+      213: 4538507914522869265
+    second: enemy-death_1
   - first:
-      213: -8396681882483885910
-    second: power-up_2
+      213: 906659468512451749
+    second: enemy-death_2
   - first:
-      213: -4901253224599256145
-    second: power-up_3
+      213: 7954939100732250566
+    second: enemy-death_3
   - first:
-      213: 3588565728726110200
-    second: power-up_4
-  - first:
-      213: 7928031386493379736
-    second: power-up_5
-  - first:
-      213: 1681324263584263227
-    second: power-up_6
+      213: 5144612786246665898
+    second: enemy-death_4
   externalObjects: {}
-  serializedVersion: 13
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -90,7 +84,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -103,7 +97,20 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 256
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -118,13 +125,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: power-up_0
+      name: enemy-death_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 23
-        height: 21
+        width: 67
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +139,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 147b8d22dd95d8040800000000000000
-      internalID: 4651472796450862913
+      spriteID: 05f976d8d90d59880800000000000000
+      internalID: -8604742137920643248
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: power-up_1
+      name: enemy-death_1
       rect:
         serializedVersion: 2
-        x: 23
+        x: 67
         y: 0
-        width: 23
-        height: 21
+        width: 67
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +160,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b3675f9395c19380800000000000000
-      internalID: -8966168145293777993
+      spriteID: 11e3f67f6e40cfe30800000000000000
+      internalID: 4538507914522869265
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: power-up_2
+      name: enemy-death_2
       rect:
         serializedVersion: 2
-        x: 46
+        x: 134
         y: 0
-        width: 23
-        height: 21
+        width: 67
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +181,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa8f69eb05ef87b80800000000000000
-      internalID: -8396681882483885910
+      spriteID: 5acdde0abf9159c00800000000000000
+      internalID: 906659468512451749
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: power-up_3
+      name: enemy-death_3
       rect:
         serializedVersion: 2
-        x: 69
+        x: 201
         y: 0
-        width: 23
-        height: 21
+        width: 67
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +202,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa3068109204bfbb0800000000000000
-      internalID: -4901253224599256145
+      spriteID: 6c9d20d07fe956e60800000000000000
+      internalID: 7954939100732250566
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: power-up_4
+      name: enemy-death_4
       rect:
         serializedVersion: 2
-        x: 92
+        x: 268
         y: 0
-        width: 23
-        height: 21
+        width: 67
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,50 +223,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ff4cd964852dc130800000000000000
-      internalID: 3588565728726110200
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: power-up_5
-      rect:
-        serializedVersion: 2
-        x: 115
-        y: 0
-        width: 23
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 894e510aa86060e60800000000000000
-      internalID: 7928031386493379736
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: power-up_6
-      rect:
-        serializedVersion: 2
-        x: 138
-        y: 0
-        width: 23
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b3c6f2b7283455710800000000000000
-      internalID: 1681324263584263227
+      spriteID: aa64a2f5216556740800000000000000
+      internalID: 5144612786246665898
       vertices: []
       indices: 
       edges: []
@@ -275,13 +240,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      power-up_0: 4651472796450862913
-      power-up_1: -8966168145293777993
-      power-up_2: -8396681882483885910
-      power-up_3: -4901253224599256145
-      power-up_4: 3588565728726110200
-      power-up_5: 7928031386493379736
-      power-up_6: 1681324263584263227
+      enemy-death_0: -8604742137920643248
+      enemy-death_1: 4538507914522869265
+      enemy-death_2: 906659468512451749
+      enemy-death_3: 7954939100732250566
+      enemy-death_4: 5144612786246665898
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
