@@ -14,9 +14,9 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<PlayerController>();
-
-        halfHeight = Camera.main.orthographicSize;
-        halfWidth = halfHeight * Camera.main.aspect;
+        var cam = GetComponent<Camera>();
+        halfHeight = cam.orthographicSize;
+        halfWidth = halfHeight * cam.aspect;
     }
 
     // Update is called once per frame
