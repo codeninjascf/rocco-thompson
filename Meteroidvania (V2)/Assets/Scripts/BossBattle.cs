@@ -7,6 +7,7 @@ public class BossBattle : MonoBehaviour
     private CameraController theCam;
     public Transform camPosition;
     public float camSpeed;
+    public Animator animator;
 
 
     // Start is called before the first frame update
@@ -21,5 +22,18 @@ public class BossBattle : MonoBehaviour
     {
         theCam.transform.position = Vector3.MoveTowards(theCam.transform.position, camPosition.position, camSpeed * Time.deltaTime);
     }
-// Move Towards = (where we are, where w ewant to be, and hiow fast)
+
+    public void EndBattle()
+    {
+        animator.SetTrigger("vanish");     
+        StartCoroutine(EndGame());
+    }
+
+    IEnumerator EndGame()
+    {
+        yield return new WaitForSeconds(0.5f);
+        gameObject.SetActive(false);
+        yield return new WaitForSeconds(3f);
+        //End Game
+    }
 }

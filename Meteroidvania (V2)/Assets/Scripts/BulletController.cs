@@ -8,6 +8,7 @@ public class BulletController : MonoBehaviour
     public Rigidbody2D theRB;
     
     public Vector2 moveDir;
+    public int damageAmount = 1;
 
     public GameObject impactEffect;
      // Start is called before the first frame update
@@ -20,6 +21,16 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.tag == "Enemy")
+        {
+            other.GetComponent<EnemyHealthController>().DamageEnemy(damageAmount);
+        }
+
+        if (other.tag == "Boss")
+        {
+            BossHealthController.instance.TakeDamage(damageAmount);
+        }
+
         if(impactEffect != null)
         {
             Instantiate(impactEffect, transform.position, Quaternion.identity);

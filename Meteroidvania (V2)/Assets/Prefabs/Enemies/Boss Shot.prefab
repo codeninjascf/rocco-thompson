@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4769934937810269421}
   - component: {fileID: 4769934937810269422}
   - component: {fileID: 4769934937810269423}
-  - component: {fileID: 4769934937810269424}
+  - component: {fileID: 2332767413060256343}
   m_Layer: 13
   m_Name: Boss Shot
   m_TagString: Untagged
@@ -28,12 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4769934937810269425}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 173.68, y: 9.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4769934937810269420
 SpriteRenderer:
@@ -89,7 +90,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &4769934937810269421
 Animator:
-  serializedVersion: 3
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -97,15 +98,17 @@ Animator:
   m_GameObject: {fileID: 4769934937810269425}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 29f0d77a2dbd3714296f5f1c3eb4a7bb, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1aed4b278c4b3134b8cbf0fe4916fe0d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!61 &4769934937810269422
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -116,7 +119,26 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.1783905, y: 0.005574703}
@@ -149,11 +171,17 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4769934937810269424
+--- !u!114 &2332767413060256343
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,10 +190,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4769934937810269425}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa577892bd4b2944e8471343a1ae83f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c914f1778af6a84e92e0c04d202208c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
-  theRB: {fileID: 4769934937810269423}
   damageAmount: 1
-  impactEffect: {fileID: 4213297997750200210, guid: 4e20ce0e3cfa39449890a267320c3c69, type: 3}
+  destroyOnDamage: 1
+  destroyEffect: {fileID: 1885396145724575585, guid: a67f49d32006ec44b8369d8f30144c70, type: 3}
